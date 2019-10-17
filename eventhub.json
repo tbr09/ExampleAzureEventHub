@@ -1,0 +1,25 @@
+{
+  "aliasPrimaryConnectionString": null,
+  "aliasSecondaryConnectionString": null,
+  "keyName": "RootManageSharedAccessKey",
+  "primaryConnectionString": "Endpoint=sb://azureeventhubnspace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sXJUmoGj6kb99ndhtg2VljUxlwbVaUktfPbx2tiSD0s=",
+  "primaryKey": "sXJUmoGj6kb99ndhtg2VljUxlwbVaUktfPbx2tiSD0s=",
+  "secondaryConnectionString": "Endpoint=sb://azureeventhubnspace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=O9C7zky8OTBuO1SXmNZYE8BcvgDc8avRkokzr+0gAIQ=",
+  "secondaryKey": "O9C7zky8OTBuO1SXmNZYE8BcvgDc8avRkokzr+0gAIQ="
+}
+
+
+
+[
+  {
+    "keyName": "key1",
+    "permissions": "Full",
+    "value": "6U2byBqKXmJdEZfD5GRmh1UqPwR1n00DWwfaal2dLM9HOLEP14aGf3SocibJum7qQt8y0I6iC02rTZf+cDqNiw=="
+  },
+  {
+    "keyName": "key2",
+    "permissions": "Full",
+    "value": "5N7mzJfLXTdga4l963Oq6/JTfb0EZ1mb1Oc21a8mzk+y1FDAQYtagLHaB45Ctk7nzQSiSutLPbuLIeuR4upvnA=="
+  }
+]
+
