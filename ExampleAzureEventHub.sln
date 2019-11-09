@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAzureEventHub.Sender
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAzureEventHub.Receiver", "ExampleAzureEventHub.Receiver\ExampleAzureEventHub.Receiver.csproj", "{A4D43E6E-430E-44F1-B92D-BA2BE231135B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAzureEventHub.IoT.Core", "ExampleAzureEventHub.IoT.Core\ExampleAzureEventHub.IoT.Core.csproj", "{7BB72C50-B563-4F94-98F0-E9027317100A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAzureEventHub.IoT.Example", "ExampleAzureEventHub.IoT.Example\ExampleAzureEventHub.IoT.Example.csproj", "{3D2E3DB1-7DA4-4160-8150-2B0A4FC025D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A4D43E6E-430E-44F1-B92D-BA2BE231135B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4D43E6E-430E-44F1-B92D-BA2BE231135B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4D43E6E-430E-44F1-B92D-BA2BE231135B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB72C50-B563-4F94-98F0-E9027317100A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB72C50-B563-4F94-98F0-E9027317100A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB72C50-B563-4F94-98F0-E9027317100A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB72C50-B563-4F94-98F0-E9027317100A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2E3DB1-7DA4-4160-8150-2B0A4FC025D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2E3DB1-7DA4-4160-8150-2B0A4FC025D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2E3DB1-7DA4-4160-8150-2B0A4FC025D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2E3DB1-7DA4-4160-8150-2B0A4FC025D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

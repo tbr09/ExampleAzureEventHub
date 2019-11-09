@@ -8,7 +8,7 @@ namespace ExampleAzureEventHub.Sender
     class Program
     {
         private static EventHubClient eventHubClient;
-        private const string EventHubConnectionString = "Endpoint=sb://azureeventhubnspace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=sXJUmoGj6kb99ndhtg2VljUxlwbVaUktfPbx2tiSD0s=";
+        private const string EventHubConnectionString = "<event-hub-connection-string>";
         private const string EventHubName = "eventhubaz203";
         private static bool SetRandomPartitionKey = false;
 
@@ -19,9 +19,6 @@ namespace ExampleAzureEventHub.Sender
 
         private static async Task MainAsync(string[] args)
         {
-            // Creates an EventHubsConnectionStringBuilder object from a the connection string, and sets the EntityPath.
-            // Typically the connection string should have the Entity Path in it, but for the sake of this simple scenario
-            // we are using the connection string from the namespace.
             var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
             {
                 EntityPath = EventHubName
@@ -37,7 +34,6 @@ namespace ExampleAzureEventHub.Sender
             Console.ReadLine();
         }
 
-        // Creates an Event Hub client and sends 100 messages to the event hub.
         private static async Task SendMessagesToEventHub(int numMessagesToSend)
         {
             var rnd = new Random();
@@ -48,7 +44,6 @@ namespace ExampleAzureEventHub.Sender
                 {
                     var message = $"Message {i}";
 
-                    // Set random partition key?
                     if (SetRandomPartitionKey)
                     {
                         var pKey = Guid.NewGuid().ToString();
