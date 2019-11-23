@@ -7,11 +7,11 @@ namespace ExampleAzureEventHub.Receiver
 {
     class Program
     {
-        private const string EventHubConnectionString = "<event-hub-connection-string>";
+        private const string EventHubConnectionString = "<EventHubConnectionString>";
         private const string EventHubName = "eventhubaz203";
         private const string StorageContainerName = "messages";
         private const string StorageAccountName = "azureeventhubblob203";
-        private const string StorageAccountKey = "<storage-account-key>";
+        private const string StorageAccountKey = "<StorageAccountKey>";
 
         private static readonly string StorageConnectionString = string.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}", StorageAccountName, StorageAccountKey);
 

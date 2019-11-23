@@ -1,10 +1,9 @@
 ﻿using ExampleAzureEventHub.IoT.Core;
-using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.EventHubs.Processor;
 using System;
 using System.Threading.Tasks;
 
-namespace ExampleAzureEventHub.IoT.Example
+namespace ExampleAzureEventHub.IoT.DataPersistenceApp
 {
     class Program
     {
@@ -24,25 +23,17 @@ namespace ExampleAzureEventHub.IoT.Example
 
             publisher.Init(EventHubConnectionString, EventHubName);
 
-            var numEvents = 1000;
+            var numEvents = 100;
             var random = new Random(Environment.TickCount);
-
-            var deviceTelemetry = new DeviceTelemetry
-            {
-                DeviceType = DeviceType.Phone,
-                IpAddress = "127.0.0.1",
-                IsOn = true,
-                Time = DateTime.Now
-            };
 
             var eventProcessorHost = new EventProcessorHost(
                 EventHubName,
-                PartitionReceiver.DefaultConsumerGroupName,
+                "dataPersistence",
                 EventHubConnectionStringConsumer,
                 StorageConnectionString,
                 StorageContainerName);
 
-            await eventProcessorHost.RegisterEventProcessorAsync<Consumer>();
+            await eventProcessorHost.RegisterEventProcessorAsync<DataPersistenceConsumer>();
 
             for (int i = 0; i < numEvents; i++)
             {

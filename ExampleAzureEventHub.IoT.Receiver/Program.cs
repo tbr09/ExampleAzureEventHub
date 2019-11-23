@@ -1,14 +1,13 @@
-﻿using ExampleAzureEventHub.IoT.Core;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.EventHubs.Processor;
+﻿using Microsoft.Azure.EventHubs.Processor;
 using System;
 using System.Threading.Tasks;
+using ExampleAzureEventHub.IoT.Core;
+using Microsoft.Azure.EventHubs;
 
-namespace ExampleAzureEventHub.IoT.Example
+namespace ExampleAzureEventHub.IoT.Receiver
 {
     class Program
     {
-        private const string EventHubConnectionString = "<EventHubConnectionString>";
         private const string EventHubConnectionStringConsumer = "<EventHubConnectionStringConsumer>";
         private const string EventHubName = "azureioteventhubsvc";
 
@@ -20,21 +19,6 @@ namespace ExampleAzureEventHub.IoT.Example
 
         static async Task Main(string[] args)
         {
-            var publisher = new Publisher();
-
-            publisher.Init(EventHubConnectionString, EventHubName);
-
-            var numEvents = 1000;
-            var random = new Random(Environment.TickCount);
-
-            var deviceTelemetry = new DeviceTelemetry
-            {
-                DeviceType = DeviceType.Phone,
-                IpAddress = "127.0.0.1",
-                IsOn = true,
-                Time = DateTime.Now
-            };
-
             var eventProcessorHost = new EventProcessorHost(
                 EventHubName,
                 PartitionReceiver.DefaultConsumerGroupName,
@@ -43,12 +27,6 @@ namespace ExampleAzureEventHub.IoT.Example
                 StorageContainerName);
 
             await eventProcessorHost.RegisterEventProcessorAsync<Consumer>();
-
-            for (int i = 0; i < numEvents; i++)
-            {
-                var randomDeviceTelemetry = DeviceTelemetry.GenerateRandom(random);
-                await publisher.PublishAsync(randomDeviceTelemetry);
-            }
 
             Console.ReadKey();
         }

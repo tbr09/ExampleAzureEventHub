@@ -4,7 +4,7 @@ using Microsoft.Azure.EventHubs.Processor;
 using System;
 using System.Threading.Tasks;
 
-namespace ExampleAzureEventHub.IoT.Example
+namespace ExampleAzureEventHub.IoT.RealTimeAnalyzer
 {
     class Program
     {
@@ -24,31 +24,23 @@ namespace ExampleAzureEventHub.IoT.Example
 
             publisher.Init(EventHubConnectionString, EventHubName);
 
-            var numEvents = 1000;
+            var numEvents = 100;
             var random = new Random(Environment.TickCount);
-
-            var deviceTelemetry = new DeviceTelemetry
-            {
-                DeviceType = DeviceType.Phone,
-                IpAddress = "127.0.0.1",
-                IsOn = true,
-                Time = DateTime.Now
-            };
 
             var eventProcessorHost = new EventProcessorHost(
                 EventHubName,
-                PartitionReceiver.DefaultConsumerGroupName,
+                "realTime",
                 EventHubConnectionStringConsumer,
                 StorageConnectionString,
                 StorageContainerName);
 
-            await eventProcessorHost.RegisterEventProcessorAsync<Consumer>();
+            await eventProcessorHost.RegisterEventProcessorAsync<RealTimeConsumer>();
 
-            for (int i = 0; i < numEvents; i++)
-            {
-                var randomDeviceTelemetry = DeviceTelemetry.GenerateRandom(random);
-                await publisher.PublishAsync(randomDeviceTelemetry);
-            }
+            //for (int i = 0; i < numEvents; i++)
+            //{
+            //    var randomDeviceTelemetry = DeviceTelemetry.GenerateRandom(random);
+            //    await publisher.PublishAsync(randomDeviceTelemetry);
+            //}
 
             Console.ReadKey();
         }

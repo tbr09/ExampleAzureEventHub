@@ -1,16 +1,20 @@
-﻿using Microsoft.Azure.EventHubs;
+﻿using ExampleAzureEventHub.IoT.Core;
+using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.EventHubs.Processor;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExampleAzureEventHub.IoT.Core
+namespace ExampleAzureEventHub.IoT.RealTimeAnalyzer
 {
-    public class Consumer : IEventProcessor
+    public class RealTimeConsumer : IEventProcessor
     {
-        private Stopwatch stopwatch;
+        private readonly List<DeviceTelemetry> _cache = new List<DeviceTelemetry>();
+        private Stopwatch _checkpointStopWatch;
 
         public async Task CloseAsync(PartitionContext context, CloseReason reason)
         {
@@ -23,8 +27,8 @@ namespace ExampleAzureEventHub.IoT.Core
         public Task OpenAsync(PartitionContext context)
         {
             Console.WriteLine($"SimpleEventProcessor initialized. Partition: '{context.PartitionId}'");
-            stopwatch = new Stopwatch();
-            stopwatch.Start();
+            _checkpointStopWatch = new Stopwatch();
+            _checkpointStopWatch.Start();
             return Task.CompletedTask;
         }
 
@@ -39,12 +43,18 @@ namespace ExampleAzureEventHub.IoT.Core
             foreach (var eventData in messages)
             {
                 var data = Encoding.UTF8.GetString(eventData.Body.Array, eventData.Body.Offset, eventData.Body.Count);
-                Console.WriteLine($"Message received. Partition: '{context.PartitionId}', Data: '{data}', Partition Key: '{eventData.SystemProperties.PartitionKey}'");
+                var deviceTelemetry = JsonConvert.DeserializeObject<DeviceTelemetry>(data);
+                _cache.Add(deviceTelemetry);
+
+                var totalNumDevices = _cache.Count;
+                var numDevicesSwitchedOn = _cache.Count(dt => dt.IsOn);
+
+                Console.WriteLine($"{numDevicesSwitchedOn} of {totalNumDevices} devices are currently switched on.");
             }
-            if (stopwatch.Elapsed > TimeSpan.FromMinutes(5))
+            if (_checkpointStopWatch.Elapsed > TimeSpan.FromMinutes(5))
             {
                 await context.CheckpointAsync();
-                stopwatch.Restart();
+                _checkpointStopWatch.Restart();
             }
         }
     }
