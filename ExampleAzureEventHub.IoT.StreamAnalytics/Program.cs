@@ -1,18 +1,14 @@
 ﻿using ExampleAzureEventHub.IoT.Core;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.EventHubs.Processor;
 using System;
 using System.Threading.Tasks;
 
-namespace ExampleAzureEventHub.IoT.RealTimeAnalyzer
+namespace ExampleAzureEventHub.IoT.StreamAnalytics
 {
     class Program
     {
         private const string EventHubConnectionStringPublisher = "<EventHubConnectionString>";
-        private const string EventHubConnectionStringConsumer = "<EventHubConnectionStringConsumer>";
         private const string EventHubName = "azureioteventhubsvc";
 
-        private const string StorageContainerName = "iotevents";
         private const string StorageAccountName = "eventhubiotex";
         private const string StorageAccountKey = "<StorageAccountKey>";
 
@@ -21,20 +17,10 @@ namespace ExampleAzureEventHub.IoT.RealTimeAnalyzer
         static async Task Main(string[] args)
         {
             var publisher = new Publisher();
-
             publisher.Init(EventHubConnectionStringPublisher, EventHubName);
 
-            var numEvents = 100;
+            var numEvents = 2000;
             var random = new Random(Environment.TickCount);
-
-            var eventProcessorHost = new EventProcessorHost(
-                EventHubName,
-                "realTime",
-                EventHubConnectionStringConsumer,
-                StorageConnectionString,
-                StorageContainerName);
-
-            await eventProcessorHost.RegisterEventProcessorAsync<RealTimeConsumer>();
 
             for (int i = 0; i < numEvents; i++)
             {

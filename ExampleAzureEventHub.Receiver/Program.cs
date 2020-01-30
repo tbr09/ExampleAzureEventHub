@@ -7,7 +7,7 @@ namespace ExampleAzureEventHub.Receiver
 {
     class Program
     {
-        private const string EventHubConnectionString = "<EventHubConnectionString>";
+        private const string EventHubConnectionStringConsumer = "<EventHubConnectionString>";
         private const string EventHubName = "eventhubaz203";
         private const string StorageContainerName = "messages";
         private const string StorageAccountName = "azureeventhubblob203";
@@ -27,7 +27,7 @@ namespace ExampleAzureEventHub.Receiver
             var eventProcessorHost = new EventProcessorHost(
                 EventHubName,
                 PartitionReceiver.DefaultConsumerGroupName,
-                EventHubConnectionString,
+                EventHubConnectionStringConsumer,
                 StorageConnectionString,
                 StorageContainerName);
 

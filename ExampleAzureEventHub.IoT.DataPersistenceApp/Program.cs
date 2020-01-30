@@ -7,7 +7,7 @@ namespace ExampleAzureEventHub.IoT.DataPersistenceApp
 {
     class Program
     {
-        private const string EventHubConnectionString = "<EventHubConnectionString>";
+        private const string EventHubConnectionStringPublisher = "<EventHubConnectionString>";
         private const string EventHubConnectionStringConsumer = "<EventHubConnectionStringConsumer>";
         private const string EventHubName = "azureioteventhubsvc";
 
@@ -21,7 +21,7 @@ namespace ExampleAzureEventHub.IoT.DataPersistenceApp
         {
             var publisher = new Publisher();
 
-            publisher.Init(EventHubConnectionString, EventHubName);
+            publisher.Init(EventHubConnectionStringPublisher, EventHubName);
 
             var numEvents = 100;
             var random = new Random(Environment.TickCount);

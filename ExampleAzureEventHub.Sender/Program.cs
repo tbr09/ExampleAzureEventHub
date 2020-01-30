@@ -8,8 +8,8 @@ namespace ExampleAzureEventHub.Sender
     class Program
     {
         private static EventHubClient eventHubClient;
-        private const string EventHubConnectionString = "<event-hub-connection-string>";
-        private const string EventHubName = "eventhubaz203";
+        private const string EventHubConnectionStringPublisher = "<event-hub-connection-string>";
+        private const string EventHubName = "<event-hub-name>";
         private static bool SetRandomPartitionKey = false;
 
         public static void Main(string[] args)
@@ -19,7 +19,7 @@ namespace ExampleAzureEventHub.Sender
 
         private static async Task MainAsync(string[] args)
         {
-            var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
+            var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionStringPublisher)
             {
                 EntityPath = EventHubName
             };

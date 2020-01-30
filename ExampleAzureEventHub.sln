@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAzureEventHub.IoT.Ex
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAzureEventHub.IoT.Receiver", "ExampleAzureEventHub.IoT.Receiver\ExampleAzureEventHub.IoT.Receiver.csproj", "{04A44C5E-C7B7-4FE7-8E2C-0A6C13168D70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAzureEventHub.IoT.RealTimeAnalyzer", "ExampleAzureEventHub.IoT.RealTimeAnalyzer\ExampleAzureEventHub.IoT.RealTimeAnalyzer.csproj", "{25C76EF3-D8B3-4EFC-B9B6-31701CCB1A08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAzureEventHub.IoT.RealTimeAnalyzer", "ExampleAzureEventHub.IoT.RealTimeAnalyzer\ExampleAzureEventHub.IoT.RealTimeAnalyzer.csproj", "{25C76EF3-D8B3-4EFC-B9B6-31701CCB1A08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAzureEventHub.IoT.DataPersistenceApp", "ExampleAzureEventHub.IoT.DataPersistenceApp\ExampleAzureEventHub.IoT.DataPersistenceApp.csproj", "{AA62EE20-FAB8-4CB0-AA59-47AF41B96BB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleAzureEventHub.IoT.DataPersistenceApp", "ExampleAzureEventHub.IoT.DataPersistenceApp\ExampleAzureEventHub.IoT.DataPersistenceApp.csproj", "{AA62EE20-FAB8-4CB0-AA59-47AF41B96BB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleAzureEventHub.IoT.StreamAnalytics", "ExampleAzureEventHub.IoT.StreamAnalytics\ExampleAzureEventHub.IoT.StreamAnalytics.csproj", "{1954092B-6934-4134-9DCC-DCFB287E80AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{AA62EE20-FAB8-4CB0-AA59-47AF41B96BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA62EE20-FAB8-4CB0-AA59-47AF41B96BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA62EE20-FAB8-4CB0-AA59-47AF41B96BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1954092B-6934-4134-9DCC-DCFB287E80AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1954092B-6934-4134-9DCC-DCFB287E80AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1954092B-6934-4134-9DCC-DCFB287E80AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1954092B-6934-4134-9DCC-DCFB287E80AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
