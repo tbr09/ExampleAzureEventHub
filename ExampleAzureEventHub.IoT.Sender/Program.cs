@@ -4,7 +4,7 @@ using Microsoft.Azure.EventHubs.Processor;
 using System;
 using System.Threading.Tasks;
 
-namespace ExampleAzureEventHub.IoT.Example
+namespace ExampleAzureEventHub.IoT.Sender
 {
     class Program
     {
